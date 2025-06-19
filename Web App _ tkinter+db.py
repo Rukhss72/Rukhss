@@ -15,22 +15,14 @@ import hmac
 
 # For secure password hashing functions
 def hash_password(password: str) -> str:
-    """
-    Hash a plaintext password using PBKDF2-HMAC-SHA256 with a random salt.
-    Returns the hex-encoded salt+key.
-    """
+   
     salt = os.urandom(16)
     key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
     return binascii.hexlify(salt + key).decode('utf-8')
 
 
 def verify_password(stored_hash: str, candidate: str) -> bool:
-    """
-    Verify a candidate password against the stored hex-encoded salt+key.
-
-    Supports legacy plain-text passwords: if the stored_hash isn't valid hex,
-    falls back to a direct string comparison and can be rehashed later.
-    """
+    
     try:
         data = binascii.unhexlify(stored_hash.encode('utf-8'))
     except (binascii.Error, TypeError):
@@ -881,8 +873,7 @@ if __name__ == "__main__":
 admin@example.com       email address
 admin123                password
 
-Student Id - X06
-Module Code - A06
+Student Id - X01 to 6
+Module Code - A01 to 6
 
-GOOD
 '''
