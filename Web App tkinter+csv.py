@@ -676,6 +676,4 @@ except KeyboardInterrupt:
 Student Id - X01 to 7
 Module Code - A01 to 7
 
-CSV GOOD
-
 '''
